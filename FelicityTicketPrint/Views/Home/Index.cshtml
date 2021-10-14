@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/employee.js"></script>
+
+<div class="container">
+    <h2>Passenger Record</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Passenger</button><br /><br />@*onclick="clearTextBox();"*@
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Ticket Number
+                </th>
+                <th>
+                    Airline PNR
+                </th>
+                <th>
+                    CSR PNR
+                </th>
+                <th>
+                    Travel Date
+                </th>
+                <th>
+                    Flight Number
+                </th>
+                <th>
+                    Class
+                </th>
+                <th>
+                    Origin
+                </th>
+                <th>
+                    Departure Time
+                </th>
+                <th>
+                    Destination
+                </th>
+                <th>
+                    Arrival Time
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+    </table>
+
+    <div class="container" style="width:70%">
+        <form>
+            <div class="row">
+                <div class="form-group" style="width:50%">
+                    <label for="TotalFare">Total Fare</label>
+                    <input type="text" class="form-control" id="TotalFare" placeholder="Total Fare" />
+                </div>
+                <div class="form-group" style="width:50%">
+                    <label for="TotalFare">Agent Name</label>
+                    <input type="text" class="form-control" id="AgentName" placeholder="Agent Name" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group" style="width:50%">
+                    <label for="Tnc">Terms & Conditions</label>
+                    <textarea type="text" class="form-control" id="Tnc" placeholder="Terms and Conditions" rows="5"></textarea>
+                </div>
+                <div class="form-group" style="width:50%">
+                    <label for="Support">Agents Address</label>
+                    <textarea type="text" class="form-control" id="AgentsAddress" placeholder="Agents Address" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group" style="width:50%">
+                    <label for="Support">Support Contact</label>
+                    <textarea type="text" class="form-control" id="Support" placeholder="Support Contact" rows="5"></textarea>
+                </div>
+                <div class="form-group" style="width:50%">
+                    <label for="Support">Agents Contact</label>
+                    <textarea type="text" class="form-control" id="AgentsContact" placeholder="Agents Contact" rows="5"></textarea>
+                </div></div>
+
+                <div class="form-group">
+                    <label for="Support">Additional Details</label>
+                    <textarea type="text" class="form-control" id="AdditionalDetails" placeholder="Additional Details" rows="5"></textarea>
+                </div>
+        </form>
+    </div>
+    <div class="container-md" style="text-align:center">
+        <button type="button" class="btn btn-primary" id="btnPrintWithFare" onclick="PrintWF();">Print With Fare</button>
+        <button type="button" class="btn btn-primary" id="btnPrintWoFare" onclick="PrintWOF();">Print W/o Fare</button>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">×</span></button>*@
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Add Passenger</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" />
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding-left:20px;">
+                            <label for="TicketNo">Ticket Number</label>
+                            <input type="text" class="form-control" id="TicketNo" placeholder="TicketNo" />
+                        </div>
+                        <div class="form-group" style="padding-left:40px;">
+                            <label for="FlightNo">Flight Number</label>
+                            <input type="text" class="form-control" id="FlightNo" placeholder="FlightNo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding-left:20px;">
+                            <label for="AirlinePnr">Airline PNR</label>
+                            <input type="text" class="form-control" id="AirlinePnr" placeholder="AirlinePnr" />
+                        </div>
+                        <div class="form-group" style="padding-left:40px;">
+                            <label for="CSRPnr">CSR PNR</label>
+                            <input type="text" class="form-control" id="CSRPnr" placeholder="CSRPnr" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding-left:20px;">
+                            <label for="TravelDate">Travel Date</label>
+                            <input type="text" class="form-control" id="TravelDate" placeholder="TravelDate" />
+                        </div>
+
+                        <div class="form-group" style="padding-left:40px;">
+                            <label for="FlightClass">Class</label>
+                            <input type="text" class="form-control" id="FlightClass" placeholder="FlightClass" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding-left:20px;">
+                            <label for="Origin">Origin</label>
+                            <input type="text" class="form-control" id="Origin" placeholder="Origin" />
+                        </div>
+                        <div class="form-group" style="padding-left:40px;">
+                            <label for="Departure">Destination</label>
+                            <input type="text" class="form-control" id="Departure" placeholder="Departure" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding-left:20px;">
+                            <label for="DepTime">Departure Time</label>
+                            <input type="text" class="form-control" id="DepTime" placeholder="DepTime" />
+                        </div>
+
+                        <div class="form-group" style="padding-left:40px;">
+                            <label for="ArrTime">Arrival Time</label>
+                            <input type="text" class="form-control" id="ArrTime" placeholder="ArrTime" />
+                        </div>
+                    </div>
+                </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
+        <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div>
+    </div>
+</div>

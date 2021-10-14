@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DBCS-Web.config Connection String" description="DBCS Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-O9F5R5P\JUGAD;Initial Catalog=FelicityPassenger;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\hp\\source\\repos\\FelicityTicketPrint\\FelicityTicketPrint\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBCS']/@connectionString" />
+  </parameter>
+</parameters>
